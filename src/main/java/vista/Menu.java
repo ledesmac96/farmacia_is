@@ -1,4 +1,4 @@
-package jframes;
+package vista;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -58,8 +58,6 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(1024, 720));
-        setPreferredSize(new java.awt.Dimension(1024, 720));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -432,7 +430,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInformesActionPerformed
 
     private void opRegFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opRegFarmaciaActionPerformed
-        // TODO add your handling code here:
+        JRegistrarFarmacia farmacia = new JRegistrarFarmacia();
+        farmacia.setVisible(true);
     }//GEN-LAST:event_opRegFarmaciaActionPerformed
 
     private void opModfDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opModfDatosActionPerformed

@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jframes;
+package vista;
 
 /**
  *
  * @author Chant
  */
-public class JBMFarmacia extends javax.swing.JFrame {
+public class JBMMedicamentos extends javax.swing.JFrame {
 
     /**
      * Creates new form JRegistrarFarmacia
      */
-    public JBMFarmacia() {
+    public JBMMedicamentos() {
         initComponents();
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -34,34 +34,34 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
-        jTextField7 = new javax.swing.JTextField();
-        jSeparator6 = new javax.swing.JSeparator();
-        jTextField8 = new javax.swing.JTextField();
-        jSeparator7 = new javax.swing.JSeparator();
-        jSeparator8 = new javax.swing.JSeparator();
         jTextField9 = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jTextField5 = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jSeparator10 = new javax.swing.JSeparator();
+        jTextField10 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,11 +74,11 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(22, 39, 49));
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel1.setText("Modificar datos");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
+        jLabel1.setText("Modificar Medicamentos");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_edit.png")); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 40, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 40, 30));
 
         jButton1.setBackground(new java.awt.Color(215, 52, 56));
         jButton1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
@@ -101,27 +101,10 @@ public class JBMFarmacia extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, 160, 50));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setAlignmentX(0.0F);
-        jTextField1.setAlignmentY(0.0F);
-        jTextField1.setBorder(null);
-        jTextField1.setOpaque(false);
-        jTextField1.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField1.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 230, 30));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 250, 10));
-
-        jLabel3.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel3.setText("ID de Farmacia");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, 20));
-
         jLabel4.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(22, 39, 49));
         jLabel4.setText("Nombre");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, 20));
 
         jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -132,25 +115,8 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jTextField2.setOpaque(false);
         jTextField2.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         jTextField2.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 30));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 250, 10));
-
-        jLabel5.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel5.setText("Localidad");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, 20));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 250, 10));
-
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setAlignmentX(0.0F);
-        jTextField3.setAlignmentY(0.0F);
-        jTextField3.setBorder(null);
-        jTextField3.setOpaque(false);
-        jTextField3.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField3.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 230, 30));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 230, 30));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 250, 10));
 
         jTextField4.setBackground(new java.awt.Color(255, 255, 255));
         jTextField4.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -161,81 +127,13 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jTextField4.setOpaque(false);
         jTextField4.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         jTextField4.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 230, 30));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 250, 10));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 30));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 250, 10));
 
         jLabel6.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel6.setText("Provincia");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, 20));
-
-        jLabel7.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel7.setText("Código postal");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, 20));
-
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setAlignmentX(0.0F);
-        jTextField5.setAlignmentY(0.0F);
-        jTextField5.setBorder(null);
-        jTextField5.setOpaque(false);
-        jTextField5.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField5.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 230, 30));
-
-        jLabel8.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel8.setText("Dirección");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, 20));
-
-        jLabel9.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel9.setText("E-Mail");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, 20));
-
-        jLabel10.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel10.setText("Teléfono");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, -1, 20));
-
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField6.setAlignmentX(0.0F);
-        jTextField6.setAlignmentY(0.0F);
-        jTextField6.setBorder(null);
-        jTextField6.setOpaque(false);
-        jTextField6.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField6.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 230, 30));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 250, 10));
-
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField7.setAlignmentX(0.0F);
-        jTextField7.setAlignmentY(0.0F);
-        jTextField7.setBorder(null);
-        jTextField7.setOpaque(false);
-        jTextField7.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField7.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 230, 30));
-        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 250, 10));
-
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField8.setAlignmentX(0.0F);
-        jTextField8.setAlignmentY(0.0F);
-        jTextField8.setBorder(null);
-        jTextField8.setOpaque(false);
-        jTextField8.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField8.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 230, 30));
-        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 250, 10));
-        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 250, 10));
+        jLabel6.setText("Detalle");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, 20));
 
         jTextField9.setBackground(new java.awt.Color(255, 255, 255));
         jTextField9.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
@@ -251,11 +149,113 @@ public class JBMFarmacia extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel11.setText("Buscar Farmacia: ");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, 20));
+        jLabel11.setText("Ingrese código de Medicamento:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, 20));
 
         jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_search.png")); // NOI18N
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(22, 39, 49));
+        jLabel7.setText("Precio");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, 20));
+
+        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField3.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField3.setAlignmentX(0.0F);
+        jTextField3.setAlignmentY(0.0F);
+        jTextField3.setBorder(null);
+        jTextField3.setOpaque(false);
+        jTextField3.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        jTextField3.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 70, 30));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 90, 10));
+
+        jLabel8.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(22, 39, 49));
+        jLabel8.setText("Unidades");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, 20));
+
+        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField6.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField6.setAlignmentX(0.0F);
+        jTextField6.setAlignmentY(0.0F);
+        jTextField6.setBorder(null);
+        jTextField6.setOpaque(false);
+        jTextField6.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        jTextField6.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 230, 30));
+
+        jLabel9.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(22, 39, 49));
+        jLabel9.setText("Nombre Laboratorio");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, 20));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 90, 10));
+
+        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField5.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField5.setAlignmentX(0.0F);
+        jTextField5.setAlignmentY(0.0F);
+        jTextField5.setBorder(null);
+        jTextField5.setOpaque(false);
+        jTextField5.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        jTextField5.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 70, 30));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 250, 10));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 250, 10));
+
+        jLabel10.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(22, 39, 49));
+        jLabel10.setText("Dirección");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, 20));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 250, 10));
+
+        jLabel13.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(22, 39, 49));
+        jLabel13.setText("Teléfono");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, 20));
+
+        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField7.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField7.setAlignmentX(0.0F);
+        jTextField7.setAlignmentY(0.0F);
+        jTextField7.setBorder(null);
+        jTextField7.setOpaque(false);
+        jTextField7.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        jTextField7.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 230, 30));
+
+        jLabel14.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(22, 39, 49));
+        jLabel14.setText("E-Mail");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, 20));
+
+        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField8.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField8.setAlignmentX(0.0F);
+        jTextField8.setAlignmentY(0.0F);
+        jTextField8.setBorder(null);
+        jTextField8.setOpaque(false);
+        jTextField8.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        jTextField8.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 230, 30));
+        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 250, 10));
+
+        jTextField10.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField10.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jTextField10.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField10.setAlignmentX(0.0F);
+        jTextField10.setAlignmentY(0.0F);
+        jTextField10.setBorder(null);
+        jTextField10.setOpaque(false);
+        jTextField10.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        jTextField10.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 230, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -273,13 +273,13 @@ public class JBMFarmacia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,21 +298,27 @@ public class JBMFarmacia extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JBMFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JBMMedicamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JBMFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JBMMedicamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JBMFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JBMMedicamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JBMFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JBMMedicamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JBMFarmacia().setVisible(true);
+                new JBMMedicamentos().setVisible(true);
             }
         });
     }
@@ -324,16 +330,16 @@ public class JBMFarmacia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -342,7 +348,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
