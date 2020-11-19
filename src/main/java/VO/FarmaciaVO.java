@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package VO;
 
-/**
- *
- * @author maximiliano
- */
 public class FarmaciaVO {
     public Integer Id_Farmacia;
     public String Nombre;

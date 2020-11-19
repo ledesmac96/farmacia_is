@@ -5,6 +5,12 @@
  */
 package vista;
 
+import DAO.FarmaciaDAO;
+import DAO.LocalidadDAO;
+import VO.FarmaciaVO;
+import VO.LocalidadVO;
+import java.util.ArrayList;
+
 /**
  *
  * @author Chant
@@ -34,7 +40,6 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -43,16 +48,23 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
-        jTextField9 = new javax.swing.JTextField();
+        txtFBuscarFarm = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         btnGenFactura = new javax.swing.JButton();
+        btnBuscarFarm = new javax.swing.JButton();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabelLoc = new javax.swing.JLabel();
+        jLabelDirec = new javax.swing.JLabel();
+        jLabelCP = new javax.swing.JLabel();
+        jLabelTel = new javax.swing.JLabel();
+        jLabelEmail = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,19 +97,14 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel4.setText("Nombre:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, 20));
 
-        jLabel5.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel5.setText("Localidad:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, 20));
-
         jLabel6.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel6.setText("Provincia:");
+        jLabel6.setText("Localidad:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 20));
 
         jLabel7.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(22, 39, 49));
-        jLabel7.setText("Código postal");
+        jLabel7.setText("Código postal:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, 20));
 
         jLabel8.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
@@ -116,24 +123,24 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, 20));
 
         jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_search.png")); // NOI18N
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(22, 39, 49));
         jLabel11.setText("Buscar Farmacia: ");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, 20));
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 250, 10));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, 20));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 250, 10));
 
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField9.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField9.setAlignmentX(0.0F);
-        jTextField9.setAlignmentY(0.0F);
-        jTextField9.setBorder(null);
-        jTextField9.setOpaque(false);
-        jTextField9.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField9.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 230, 30));
+        txtFBuscarFarm.setBackground(new java.awt.Color(255, 255, 255));
+        txtFBuscarFarm.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        txtFBuscarFarm.setForeground(new java.awt.Color(0, 0, 0));
+        txtFBuscarFarm.setAlignmentX(0.0F);
+        txtFBuscarFarm.setAlignmentY(0.0F);
+        txtFBuscarFarm.setBorder(null);
+        txtFBuscarFarm.setOpaque(false);
+        txtFBuscarFarm.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtFBuscarFarm.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtFBuscarFarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 230, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -210,11 +217,11 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel13.setText("Cód. Medicamento");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
 
-        jButton3.setBackground(new java.awt.Color(22, 39, 49));
-        jButton3.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jButton3.setText("Agregar");
-        jButton3.setAlignmentY(0.0F);
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 45, -1, 20));
+        jButton5.setBackground(new java.awt.Color(22, 39, 49));
+        jButton5.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        jButton5.setText("Agregar");
+        jButton5.setAlignmentY(0.0F);
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 45, -1, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 460, 370));
 
@@ -235,6 +242,35 @@ public class JRegistrarPedido extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnGenFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 640, 120, 30));
+
+        btnBuscarFarm.setBackground(new java.awt.Color(22, 39, 49));
+        btnBuscarFarm.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        btnBuscarFarm.setText("Buscar");
+        btnBuscarFarm.setAlignmentY(0.0F);
+        btnBuscarFarm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarFarmActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBuscarFarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, 20));
+
+        jLabelNombre.setText("jLabel14");
+        jPanel1.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 390, -1));
+
+        jLabelLoc.setText("jLabel14");
+        jPanel1.add(jLabelLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 140, -1));
+
+        jLabelDirec.setText("jLabel14");
+        jPanel1.add(jLabelDirec, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 380, -1));
+
+        jLabelCP.setText("jLabel14");
+        jPanel1.add(jLabelCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 110, -1));
+
+        jLabelTel.setText("jLabel14");
+        jPanel1.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 160, -1));
+
+        jLabelEmail.setText("jLabel14");
+        jPanel1.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 400, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,6 +303,23 @@ public class JRegistrarPedido extends javax.swing.JFrame {
     private void btnGenFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenFacturaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGenFacturaActionPerformed
+
+    private void btnBuscarFarmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFarmActionPerformed
+        int id = Integer.valueOf(txtFBuscarFarm.getText());
+        FarmaciaVO fvos = new FarmaciaVO();
+        FarmaciaDAO farmDAO = new FarmaciaDAO();
+        LocalidadDAO ldao = new LocalidadDAO();
+        fvos = farmDAO.Buscar_FarmaciaVO(id);
+        LocalidadVO lvo = ldao.Buscar_LocalidadVO(fvos.getId_Localidad());
+        
+        jLabelNombre.setText(fvos.getNombre());
+        jLabelDirec.setText(fvos.getDireccion());
+        jLabelLoc.setText(lvo.getNombre());
+        jLabelCP.setText(lvo.getCodp());
+        jLabelTel.setText(String.valueOf(fvos.getTelefono()));
+        jLabelEmail.setText(fvos.getEMail());
+              
+    }//GEN-LAST:event_btnBuscarFarmActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,10 +364,11 @@ public class JRegistrarPedido extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarFarm;
     private javax.swing.JButton btnGenFactura;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -323,17 +377,22 @@ public class JRegistrarPedido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelCP;
+    private javax.swing.JLabel jLabelDirec;
+    private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelLoc;
+    private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelTel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtFBuscarFarm;
     // End of variables declaration//GEN-END:variables
 }

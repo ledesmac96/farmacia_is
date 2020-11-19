@@ -9,6 +9,8 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
         initComponents();
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        //Cierra solo el JFrame y no todo el programa
+        setDefaultCloseOperation(JRegistrarFarmacia.DISPOSE_ON_CLOSE); 
     }
 
     @SuppressWarnings("unchecked")

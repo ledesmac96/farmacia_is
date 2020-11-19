@@ -33,7 +33,6 @@ public class Menu extends javax.swing.JFrame {
         optionsFarmacias = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         opRegFarmacia = new javax.swing.JButton();
-        opModfDatos = new javax.swing.JButton();
         opElimFarmacia = new javax.swing.JButton();
         optionsVentas = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -43,18 +42,17 @@ public class Menu extends javax.swing.JFrame {
         optionsMedicamentos = new javax.swing.JPanel();
         opRegCompra = new javax.swing.JButton();
         opModfDatosMed = new javax.swing.JButton();
-        opElimMed = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         optionsLaboratorios = new javax.swing.JPanel();
         opRegLab = new javax.swing.JButton();
-        opElimLab = new javax.swing.JButton();
         opModfDatosLab = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         optionsInformes = new javax.swing.JPanel();
         opGenInfPrecios = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        opRegInfPrecios = new javax.swing.JButton();
+        opGenDetalleMes = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
+        opGenResTotal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -191,16 +189,6 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsFarmacias.add(opRegFarmacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 88, 287, 68));
 
-        opModfDatos.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        opModfDatos.setText("Eliminar Farmacia");
-        opModfDatos.setAlignmentY(0.0F);
-        opModfDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opModfDatosActionPerformed(evt);
-            }
-        });
-        optionsFarmacias.add(opModfDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 299, 287, 68));
-
         opElimFarmacia.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         opElimFarmacia.setText("Modificar datos");
         opElimFarmacia.setAlignmentY(0.0F);
@@ -276,16 +264,6 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsMedicamentos.add(opModfDatosMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 299, 287, 68));
 
-        opElimMed.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        opElimMed.setText("Eliminar medicamentos");
-        opElimMed.setAlignmentY(0.0F);
-        opElimMed.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opElimMedActionPerformed(evt);
-            }
-        });
-        optionsMedicamentos.add(opElimMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 196, 287, 68));
-
         jLabel12.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Seleccione alguna opción:");
@@ -305,16 +283,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         optionsLaboratorios.add(opRegLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 88, 287, 68));
-
-        opElimLab.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        opElimLab.setText("Eliminar Laboratorio");
-        opElimLab.setAlignmentY(0.0F);
-        opElimLab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opElimLabActionPerformed(evt);
-            }
-        });
-        optionsLaboratorios.add(opElimLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 299, 287, 68));
 
         opModfDatosLab.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         opModfDatosLab.setText("Modificar datos");
@@ -337,7 +305,7 @@ public class Menu extends javax.swing.JFrame {
         optionsInformes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         opGenInfPrecios.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        opGenInfPrecios.setText("Generar informe de precios");
+        opGenInfPrecios.setText("Generar Informe de Precios");
         opGenInfPrecios.setAlignmentY(0.0F);
         opGenInfPrecios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,30 +314,40 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsInformes.add(opGenInfPrecios, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 88, 287, 68));
 
-        jButton14.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        jButton14.setText("Eliminar Farmacia");
-        jButton14.setAlignmentY(0.0F);
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        opRegInfPrecios.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        opRegInfPrecios.setText("Registrar Informe de Precios");
+        opRegInfPrecios.setAlignmentY(0.0F);
+        opRegInfPrecios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                opRegInfPreciosActionPerformed(evt);
             }
         });
-        optionsInformes.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 299, 287, 68));
+        optionsInformes.add(opRegInfPrecios, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 287, 68));
 
-        jButton15.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        jButton15.setText("Modificar datos");
-        jButton15.setAlignmentY(0.0F);
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        opGenDetalleMes.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        opGenDetalleMes.setText("Generar Detalle Mensual");
+        opGenDetalleMes.setAlignmentY(0.0F);
+        opGenDetalleMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                opGenDetalleMesActionPerformed(evt);
             }
         });
-        optionsInformes.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 196, 287, 68));
+        optionsInformes.add(opGenDetalleMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 196, 287, 68));
 
         jLabel18.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Seleccione alguna opción:");
         optionsInformes.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
+
+        opGenResTotal.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        opGenResTotal.setText("Generar Resumen Total");
+        opGenResTotal.setAlignmentY(0.0F);
+        opGenResTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opGenResTotalActionPerformed(evt);
+            }
+        });
+        optionsInformes.add(opGenResTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 299, 287, 68));
 
         jPanelOptions.add(optionsInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 650, 520));
 
@@ -434,16 +412,13 @@ public class Menu extends javax.swing.JFrame {
         farmacia.setVisible(true);
     }//GEN-LAST:event_opRegFarmaciaActionPerformed
 
-    private void opModfDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opModfDatosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opModfDatosActionPerformed
-
     private void opElimFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opElimFarmaciaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_opElimFarmaciaActionPerformed
 
     private void opRegPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opRegPedidosActionPerformed
-        // TODO add your handling code here:
+        JRegistrarPedido ped = new JRegistrarPedido();
+        ped.setVisible(true);
     }//GEN-LAST:event_opRegPedidosActionPerformed
 
     private void opRegFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opRegFacturaActionPerformed
@@ -462,17 +437,9 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_opModfDatosMedActionPerformed
 
-    private void opElimMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opElimMedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opElimMedActionPerformed
-
     private void opRegLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opRegLabActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_opRegLabActionPerformed
-
-    private void opElimLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opElimLabActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opElimLabActionPerformed
 
     private void opModfDatosLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opModfDatosLabActionPerformed
         // TODO add your handling code here:
@@ -482,17 +449,21 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_opGenInfPreciosActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+    private void opRegInfPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opRegInfPreciosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+    }//GEN-LAST:event_opRegInfPreciosActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void opGenDetalleMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opGenDetalleMesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
+    }//GEN-LAST:event_opGenDetalleMesActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
+
+    private void opGenResTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opGenResTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opGenResTotalActionPerformed
 
    
     public static void main(String args[]) {
@@ -523,7 +494,7 @@ public class Menu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Menu().setVisible(true);
+                
             }
         });
         
@@ -536,8 +507,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnMedicamentos;
     private javax.swing.JButton btnVentas;
     private javax.swing.JLabel iconFarmacias;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -555,16 +524,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel menu_lat;
     private javax.swing.JPanel menu_sup;
     private javax.swing.JButton opElimFarmacia;
-    private javax.swing.JButton opElimLab;
-    private javax.swing.JButton opElimMed;
+    private javax.swing.JButton opGenDetalleMes;
     private javax.swing.JButton opGenInfPrecios;
     private javax.swing.JButton opGenInformeP;
-    private javax.swing.JButton opModfDatos;
+    private javax.swing.JButton opGenResTotal;
     private javax.swing.JButton opModfDatosLab;
     private javax.swing.JButton opModfDatosMed;
     private javax.swing.JButton opRegCompra;
     private javax.swing.JButton opRegFactura;
     private javax.swing.JButton opRegFarmacia;
+    private javax.swing.JButton opRegInfPrecios;
     private javax.swing.JButton opRegLab;
     private javax.swing.JButton opRegPedidos;
     private javax.swing.JPanel optionsFarmacias;

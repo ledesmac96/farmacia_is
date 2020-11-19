@@ -6,8 +6,8 @@ public class Principal {
 
     public static void main(String[] args) {
         // TODO code application logic here
-        Menu Princ = new Menu();
-        Princ.setVisible(true);
+        Menu princ = new Menu();
+        princ.setVisible(true);
     }
     
 }
