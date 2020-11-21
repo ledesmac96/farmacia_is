@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
 import DAO.FarmaciaDAO;
@@ -11,19 +6,20 @@ import VO.FarmaciaVO;
 import VO.LocalidadVO;
 import java.util.ArrayList;
 
-/**
- *
- * @author Chant
- */
-public class JRegistrarPedido extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JRegistrarFarmacia
-     */
+public class JRegistrarPedido extends javax.swing.JFrame {
+    
     public JRegistrarPedido() {
         initComponents();
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        txtFMedicamento.setEditable(false);
+        txtFMedicamento.setEnabled(false);
+        jPopupMenu.add(jPanelList);
+    }
+    
+    public void getAllMedicamentos() {
+        
     }
 
     /**
@@ -35,6 +31,10 @@ public class JRegistrarPedido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelList = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList = new javax.swing.JList<>();
+        jPopupMenu = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -53,7 +53,7 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        txtFMedicamento = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -65,6 +65,22 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabelCP = new javax.swing.JLabel();
         jLabelTel = new javax.swing.JLabel();
         jLabelEmail = new javax.swing.JLabel();
+
+        jList.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jScrollPane2.setViewportView(jList);
+
+        javax.swing.GroupLayout jPanelListLayout = new javax.swing.GroupLayout(jPanelList);
+        jPanelList.setLayout(jPanelListLayout);
+        jPanelListLayout.setHorizontalGroup(
+            jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanelListLayout.setVerticalGroup(
+            jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+        );
+
+        jPopupMenu.setFocusable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,10 +153,11 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         txtFBuscarFarm.setAlignmentX(0.0F);
         txtFBuscarFarm.setAlignmentY(0.0F);
         txtFBuscarFarm.setBorder(null);
+        txtFBuscarFarm.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtFBuscarFarm.setOpaque(false);
         txtFBuscarFarm.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtFBuscarFarm.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(txtFBuscarFarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 230, 30));
+        jPanel1.add(txtFBuscarFarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 230, 20));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -150,7 +167,7 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(22, 39, 49));
         jLabel3.setText("Pedido");
         jLabel3.setAlignmentY(0.0F);
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 60, -1));
 
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
@@ -198,27 +215,33 @@ public class JRegistrarPedido extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 460, 290));
 
-        jTextField1.setBackground(java.awt.SystemColor.info);
-        jTextField1.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setAlignmentX(0.0F);
-        jTextField1.setAlignmentY(0.0F);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtFMedicamento.setBackground(java.awt.SystemColor.info);
+        txtFMedicamento.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        txtFMedicamento.setForeground(new java.awt.Color(0, 0, 0));
+        txtFMedicamento.setAlignmentX(0.0F);
+        txtFMedicamento.setAlignmentY(0.0F);
+        txtFMedicamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtFMedicamentoActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 110, 30));
-        jTextField1.getAccessibleContext().setAccessibleName("");
-        jTextField1.getAccessibleContext().setAccessibleDescription("Código med.");
+        txtFMedicamento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFMedicamentoKeyReleased(evt);
+            }
+        });
+        jPanel2.add(txtFMedicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 220, 30));
+        txtFMedicamento.getAccessibleContext().setAccessibleName("");
+        txtFMedicamento.getAccessibleContext().setAccessibleDescription("Código med.");
 
         jLabel13.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Cód. Medicamento");
+        jLabel13.setText("Buscar Medicamento");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
 
         jButton5.setBackground(new java.awt.Color(22, 39, 49));
         jButton5.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Agregar");
         jButton5.setAlignmentY(0.0F);
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 45, -1, 20));
@@ -245,6 +268,7 @@ public class JRegistrarPedido extends javax.swing.JFrame {
 
         btnBuscarFarm.setBackground(new java.awt.Color(22, 39, 49));
         btnBuscarFarm.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        btnBuscarFarm.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarFarm.setText("Buscar");
         btnBuscarFarm.setAlignmentY(0.0F);
         btnBuscarFarm.addActionListener(new java.awt.event.ActionListener() {
@@ -254,22 +278,22 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         });
         jPanel1.add(btnBuscarFarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, 20));
 
-        jLabelNombre.setText("jLabel14");
+        jLabelNombre.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jPanel1.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 390, -1));
 
-        jLabelLoc.setText("jLabel14");
+        jLabelLoc.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jPanel1.add(jLabelLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 140, -1));
 
-        jLabelDirec.setText("jLabel14");
+        jLabelDirec.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jPanel1.add(jLabelDirec, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 380, -1));
 
-        jLabelCP.setText("jLabel14");
-        jPanel1.add(jLabelCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 110, -1));
+        jLabelCP.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jPanel1.add(jLabelCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 110, -1));
 
-        jLabelTel.setText("jLabel14");
-        jPanel1.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 160, -1));
+        jLabelTel.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jPanel1.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 160, -1));
 
-        jLabelEmail.setText("jLabel14");
+        jLabelEmail.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jPanel1.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 400, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -292,10 +316,6 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -311,15 +331,43 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         LocalidadDAO ldao = new LocalidadDAO();
         fvos = farmDAO.Buscar_FarmaciaVO(id);
         LocalidadVO lvo = ldao.Buscar_LocalidadVO(fvos.getId_Localidad());
-        
-        jLabelNombre.setText(fvos.getNombre());
-        jLabelDirec.setText(fvos.getDireccion());
-        jLabelLoc.setText(lvo.getNombre());
-        jLabelCP.setText(lvo.getCodp());
-        jLabelTel.setText(String.valueOf(fvos.getTelefono()));
-        jLabelEmail.setText(fvos.getEMail());
-              
+
+        if (fvos != null) {
+            txtFMedicamento.setEditable(true);
+            txtFMedicamento.setEnabled(true);
+            jLabelNombre.setText(fvos.getNombre());
+            jLabelDirec.setText(fvos.getDireccion());
+            jLabelLoc.setText(lvo.getNombre());
+            jLabelCP.setText(lvo.getCodp());
+            jLabelTel.setText(String.valueOf(fvos.getTelefono()));
+            jLabelEmail.setText(fvos.getEMail());
+            getAllMedicamentos();
+        }
+        else{
+            System.out.println("No existe la Farmacia ingresada");
+            txtFMedicamento.setEditable(false);
+            txtFMedicamento.setEnabled(false);
+            jLabelNombre.setText("");
+            jLabelDirec.setText("");
+            jLabelLoc.setText("");
+            jLabelCP.setText("");
+            jLabelTel.setText("");
+            jLabelEmail.setText("");
+        }
+
     }//GEN-LAST:event_btnBuscarFarmActionPerformed
+
+    private void txtFMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFMedicamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFMedicamentoActionPerformed
+
+    private void txtFMedicamentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFMedicamentoKeyReleased
+        String search = txtFMedicamento.getText().trim();
+        if (!search.equals("")){
+            //System.out.println(search);
+            jPopupMenu.show(txtFMedicamento, 0, txtFMedicamento.getHeight());
+        }
+    }//GEN-LAST:event_txtFMedicamentoKeyReleased
 
     /**
      * @param args the command line arguments
@@ -387,12 +435,18 @@ public class JRegistrarPedido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLoc;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelTel;
+    private javax.swing.JList<String> jList;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelList;
+    private javax.swing.JPopupMenu jPopupMenu;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtFBuscarFarm;
+    private javax.swing.JTextField txtFMedicamento;
     // End of variables declaration//GEN-END:variables
+
+
 }
