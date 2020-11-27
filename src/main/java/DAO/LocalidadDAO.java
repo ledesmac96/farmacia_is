@@ -11,7 +11,7 @@ public class LocalidadDAO {
     public LocalidadVO Buscar_LocalidadVO(int id) {
         LocalidadVO vo = new LocalidadVO();
         Conectar conec = new Conectar();
-        String sql = "select * from localidad where Id_Localidad = ?;";
+        String sql = "select * from LOCALIDAD where Id_Localidad = ?;";
         ResultSet rs = null;
         PreparedStatement ps = null;
         try {
@@ -21,6 +21,7 @@ public class LocalidadDAO {
             if (rs.next()) {
                 vo.setNombre(rs.getString(2));
                 vo.setCodp(rs.getString(3));
+                vo.setId_Region(rs.getInt(4));
             }
 
         } catch (SQLException ex) {

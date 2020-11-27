@@ -66,7 +66,6 @@ public class Menu extends javax.swing.JFrame {
         menu_lat.setToolTipText("Menu lateral");
         menu_lat.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_sales.png")); // NOI18N
         jLabel4.setAlignmentY(0.0F);
         menu_lat.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 40, 40));
 
@@ -81,7 +80,6 @@ public class Menu extends javax.swing.JFrame {
         });
         menu_lat.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 280, 80));
 
-        iconFarmacias.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_pharmacy.png")); // NOI18N
         iconFarmacias.setAlignmentY(0.0F);
         menu_lat.add(iconFarmacias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 40, 40));
 
@@ -97,7 +95,6 @@ public class Menu extends javax.swing.JFrame {
         });
         menu_lat.add(btnFarmacias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 280, 80));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_medicine.png")); // NOI18N
         jLabel5.setAlignmentY(0.0F);
         menu_lat.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 50, 40));
 
@@ -112,7 +109,6 @@ public class Menu extends javax.swing.JFrame {
         });
         menu_lat.add(btnMedicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 280, 80));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_report.png")); // NOI18N
         jLabel7.setAlignmentY(0.0F);
         menu_lat.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 40, 40));
 
@@ -127,7 +123,6 @@ public class Menu extends javax.swing.JFrame {
         });
         menu_lat.add(btnInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 280, 80));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_lab.png")); // NOI18N
         jLabel6.setAlignmentY(0.0F);
         menu_lat.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, -1, 40));
 
@@ -143,15 +138,13 @@ public class Menu extends javax.swing.JFrame {
         menu_lat.add(btnLabo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 280, 80));
 
         jLabel1.setBackground(new java.awt.Color(22, 39, 49));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\menu_lat.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\unse\\cursadas =p\\Ingenieria del Software\\Taller\\farmacia_is\\src\\main\\java\\resources\\menu_lat.png")); // NOI18N
         jLabel1.setText("jLabel1");
         menu_lat.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 770));
 
         getContentPane().add(menu_lat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menu_sup.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\usuario.png")); // NOI18N
         menu_sup.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 20, 70, 70));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
@@ -159,8 +152,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Administrador");
         menu_sup.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, 110, 30));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\menu_sup.png")); // NOI18N
         menu_sup.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, -1));
 
         getContentPane().add(menu_sup, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, -1));
@@ -175,7 +166,6 @@ public class Menu extends javax.swing.JFrame {
         optionsFarmacias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Seleccione alguna opción:");
         optionsFarmacias.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
@@ -205,7 +195,6 @@ public class Menu extends javax.swing.JFrame {
         optionsVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Seleccione alguna opción:");
         optionsVentas.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
@@ -265,7 +254,6 @@ public class Menu extends javax.swing.JFrame {
         optionsMedicamentos.add(opModfDatosMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 299, 287, 68));
 
         jLabel12.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Seleccione alguna opción:");
         optionsMedicamentos.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
@@ -295,7 +283,6 @@ public class Menu extends javax.swing.JFrame {
         optionsLaboratorios.add(opModfDatosLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 196, 287, 68));
 
         jLabel17.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Seleccione alguna opción:");
         optionsLaboratorios.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
@@ -335,7 +322,6 @@ public class Menu extends javax.swing.JFrame {
         optionsInformes.add(opGenDetalleMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 196, 287, 68));
 
         jLabel18.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Seleccione alguna opción:");
         optionsInformes.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
@@ -413,7 +399,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_opRegFarmaciaActionPerformed
 
     private void opElimFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opElimFarmaciaActionPerformed
-        // TODO add your handling code here:
+                // TODO add your handling code here:
+       JBMFarmacia VistaJBMF = new JBMFarmacia();
+       VistaJBMF.setVisible(true);
     }//GEN-LAST:event_opElimFarmaciaActionPerformed
 
     private void opRegPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opRegPedidosActionPerformed

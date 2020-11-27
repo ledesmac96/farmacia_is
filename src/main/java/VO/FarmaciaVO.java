@@ -1,6 +1,8 @@
 package VO;
 
 public class FarmaciaVO {
+
+    
     public Integer Id_Farmacia;
     public String Nombre;
     public String Direccion;
@@ -9,6 +11,7 @@ public class FarmaciaVO {
     public Integer Id_Localidad;
     public Integer Id_Motivo;
     public Integer Id_Estado;
+
 
     /**
      * @return the Id_Farmacia
@@ -113,6 +116,13 @@ public class FarmaciaVO {
      */
     public void setId_Estado(Integer Id_Estado) {
         this.Id_Estado = Id_Estado;
+    }
+
+    /**
+     * @param Id_Farmacia the Id_Farmacia to set
+     */
+    public void setId_Farmacia(Integer Id_Farmacia) {
+        this.Id_Farmacia = Id_Farmacia;
     }
     
 }

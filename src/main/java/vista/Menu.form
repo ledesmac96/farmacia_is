@@ -4,7 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-      <Color id="Default Cursor"/>
+      <Color id="Cursor Por defecto"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -47,9 +47,6 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Chant\Documents\NetBeansProjects\FarmaciaIS\src\main\java\resources\icon_sales.png"/>
-            </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Constraints>
@@ -82,9 +79,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="iconFarmacias">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Chant\Documents\NetBeansProjects\FarmaciaIS\src\main\java\resources\icon_pharmacy.png"/>
-            </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Constraints>
@@ -118,9 +112,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Chant\Documents\NetBeansProjects\FarmaciaIS\src\main\java\resources\icon_medicine.png"/>
-            </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Constraints>
@@ -153,9 +144,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Chant\Documents\NetBeansProjects\FarmaciaIS\src\main\java\resources\icon_report.png"/>
-            </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Constraints>
@@ -188,9 +176,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Chant\Documents\NetBeansProjects\FarmaciaIS\src\main\java\resources\icon_lab.png"/>
-            </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Constraints>
@@ -227,7 +212,7 @@
               <Color blue="31" green="27" red="16" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Chant\Documents\NetBeansProjects\FarmaciaIS\src\main\java\resources\menu_lat.png"/>
+              <Image iconType="2" name="D:\unse\cursadas =p\Ingenieria del Software\Taller\farmacia_is\src\main\java\resources\menu_lat.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
@@ -251,11 +236,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel9">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Chant\Documents\NetBeansProjects\FarmaciaIS\src\main\java\resources\usuario.png"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="1020" y="20" width="70" height="70"/>
@@ -282,11 +262,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Chant\Documents\NetBeansProjects\FarmaciaIS\src\main\java\resources\menu_sup.png"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="0" width="1160" height="-1"/>
@@ -336,9 +311,6 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Seleccione alguna opci&#xf3;n:"/>
               </Properties>
@@ -404,9 +376,6 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Seleccione alguna opci&#xf3;n:"/>
               </Properties>
@@ -524,9 +493,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Seleccione alguna opci&#xf3;n:"/>
               </Properties>
               <Constraints>
@@ -591,9 +557,6 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Seleccione alguna opci&#xf3;n:"/>
               </Properties>
@@ -676,9 +639,6 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Seleccione alguna opci&#xf3;n:"/>
               </Properties>

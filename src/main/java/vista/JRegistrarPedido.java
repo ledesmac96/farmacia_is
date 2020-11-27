@@ -95,8 +95,6 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(22, 39, 49));
         jLabel1.setText("Registrar pedido");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_add.png")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 30, 20));
 
         jButton1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
@@ -137,8 +135,6 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(22, 39, 49));
         jLabel10.setText("Teléfono:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, 20));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_search.png")); // NOI18N
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
@@ -147,13 +143,11 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, 20));
         jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 250, 10));
 
-        txtFBuscarFarm.setBackground(new java.awt.Color(255, 255, 255));
         txtFBuscarFarm.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        txtFBuscarFarm.setForeground(new java.awt.Color(0, 0, 0));
         txtFBuscarFarm.setAlignmentX(0.0F);
         txtFBuscarFarm.setAlignmentY(0.0F);
         txtFBuscarFarm.setBorder(null);
-        txtFBuscarFarm.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtFBuscarFarm.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtFBuscarFarm.setOpaque(false);
         txtFBuscarFarm.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtFBuscarFarm.setSelectionColor(new java.awt.Color(0, 0, 0));
@@ -170,7 +164,6 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 60, -1));
 
         jTable1.setAutoCreateRowSorter(true);
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -209,15 +202,12 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jTable1.setAlignmentX(0.0F);
         jTable1.setAlignmentY(0.0F);
         jTable1.setGridColor(new java.awt.Color(204, 204, 204));
-        jTable1.setShowHorizontalLines(true);
-        jTable1.setShowVerticalLines(true);
         jScrollPane1.setViewportView(jTable1);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 460, 290));
 
         txtFMedicamento.setBackground(java.awt.SystemColor.info);
         txtFMedicamento.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        txtFMedicamento.setForeground(new java.awt.Color(0, 0, 0));
         txtFMedicamento.setAlignmentX(0.0F);
         txtFMedicamento.setAlignmentY(0.0F);
         txtFMedicamento.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +225,6 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         txtFMedicamento.getAccessibleContext().setAccessibleDescription("Código med.");
 
         jLabel13.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Buscar Medicamento");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
 
@@ -244,6 +233,11 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Agregar");
         jButton5.setAlignmentY(0.0F);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 45, -1, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 460, 370));
@@ -368,6 +362,10 @@ public class JRegistrarPedido extends javax.swing.JFrame {
             jPopupMenu.show(txtFMedicamento, 0, txtFMedicamento.getHeight());
         }
     }//GEN-LAST:event_txtFMedicamentoKeyReleased
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
