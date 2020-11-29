@@ -8,10 +8,12 @@ package vista;
 import DAO.EstadoDAO;
 import DAO.FarmaciaDAO;
 import DAO.LocalidadDAO;
+import DAO.MotivoDAO;
 import DAO.RegionDAO;
 import VO.EstadoVO;
 import VO.FarmaciaVO;
 import VO.LocalidadVO;
+import VO.MotivoVO;
 import VO.RegionVO;
 import java.time.LocalDate;
 
@@ -28,6 +30,8 @@ public class JBMFarmacia extends javax.swing.JFrame {
         initComponents();
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        setDefaultCloseOperation(JBMFarmacia.DISPOSE_ON_CLOSE);//para salir de la ventana sin salir del programa
+
     }
 
     /**
@@ -73,6 +77,9 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jTextTelefono = new javax.swing.JTextField();
         jButtonBuscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaDetalleMotivo = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,8 +93,8 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(22, 39, 49));
         jLabel1.setText("Modificar datos");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 40, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 40, 30));
 
         jButton1.setBackground(new java.awt.Color(215, 52, 56));
         jButton1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
@@ -98,7 +105,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 630, 160, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, 160, 50));
 
         jButtonGuardar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         jButtonGuardar.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,12 +115,12 @@ public class JBMFarmacia extends javax.swing.JFrame {
                 jButtonGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, 160, 50));
+        jPanel1.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 660, 160, 50));
 
         jLabel4.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(22, 39, 49));
         jLabel4.setText("Nombre");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, 20));
 
         jTextNombre.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jTextNombre.setAlignmentX(0.0F);
@@ -122,14 +129,14 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jTextNombre.setOpaque(false);
         jTextNombre.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         jTextNombre.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 30));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 250, 10));
+        jPanel1.add(jTextNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 230, 30));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 250, 10));
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(22, 39, 49));
         jLabel5.setText("Localidad");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, 20));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 250, 10));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 250, 10));
 
         jTextLocalidad.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jTextLocalidad.setAlignmentX(0.0F);
@@ -138,7 +145,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jTextLocalidad.setOpaque(false);
         jTextLocalidad.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         jTextLocalidad.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 230, 30));
+        jPanel1.add(jTextLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 30));
 
         jTextProvincia.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jTextProvincia.setAlignmentX(0.0F);
@@ -152,18 +159,18 @@ public class JBMFarmacia extends javax.swing.JFrame {
                 jTextProvinciaActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 230, 30));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 250, 10));
+        jPanel1.add(jTextProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 230, 30));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 250, 10));
 
         jLabel6.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(22, 39, 49));
         jLabel6.setText("Provincia");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, 20));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, 20));
 
         jLabel7.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(22, 39, 49));
         jLabel7.setText("Código postal");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, 20));
 
         jTextCodigoPostal.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jTextCodigoPostal.setAlignmentX(0.0F);
@@ -172,22 +179,22 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jTextCodigoPostal.setOpaque(false);
         jTextCodigoPostal.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         jTextCodigoPostal.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 230, 30));
+        jPanel1.add(jTextCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 230, 30));
 
         jLabel8.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(22, 39, 49));
         jLabel8.setText("Dirección");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, 20));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, 20));
 
         jLabel9.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(22, 39, 49));
         jLabel9.setText("E-Mail");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, 20));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, 20));
 
         jLabel10.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(22, 39, 49));
         jLabel10.setText("Teléfono");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, -1, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, 20));
 
         jTextEstado.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jTextEstado.setAlignmentX(0.0F);
@@ -201,8 +208,8 @@ public class JBMFarmacia extends javax.swing.JFrame {
                 jTextEstadoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 570, 230, 30));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 250, 10));
+        jPanel1.add(jTextEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, 230, 30));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 250, 10));
 
         jTextEmail.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jTextEmail.setAlignmentX(0.0F);
@@ -216,8 +223,8 @@ public class JBMFarmacia extends javax.swing.JFrame {
                 jTextEmailActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 230, 30));
-        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 250, 10));
+        jPanel1.add(jTextEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 230, 30));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 250, 10));
 
         jTextDireccion.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jTextDireccion.setAlignmentX(0.0F);
@@ -226,9 +233,9 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jTextDireccion.setOpaque(false);
         jTextDireccion.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         jTextDireccion.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 230, 30));
-        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 250, 10));
-        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 250, 10));
+        jPanel1.add(jTextDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 230, 30));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 250, 10));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 250, 10));
 
         jTextBuscarFarmacia.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jTextBuscarFarmacia.setAlignmentX(0.0F);
@@ -247,26 +254,26 @@ public class JBMFarmacia extends javax.swing.JFrame {
                 jTextBuscarFarmaciaKeyReleased(evt);
             }
         });
-        jPanel1.add(jTextBuscarFarmacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 230, 30));
+        jPanel1.add(jTextBuscarFarmacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 230, 30));
 
         jSeparator9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jSeparator9KeyReleased(evt);
             }
         });
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 250, 30));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 250, 30));
 
         jLabel11.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(22, 39, 49));
         jLabel11.setText("Buscar Farmacia: ");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, 20));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, 20));
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
-        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 600, 250, 10));
+        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, 250, 10));
 
         jLabel13.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(22, 39, 49));
         jLabel13.setText("Estado");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, -1, 20));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, -1, 20));
 
         jTextTelefono.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jTextTelefono.setAlignmentX(0.0F);
@@ -280,7 +287,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
                 jTextTelefonoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 230, 30));
+        jPanel1.add(jTextTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 230, 30));
 
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +295,16 @@ public class JBMFarmacia extends javax.swing.JFrame {
                 jButtonBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
+        jPanel1.add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, -1));
+
+        jTextAreaDetalleMotivo.setColumns(20);
+        jTextAreaDetalleMotivo.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaDetalleMotivo);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 560, 410, -1));
+
+        jLabel3.setText("Detalle del Motivo de la baja");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -299,8 +315,8 @@ public class JBMFarmacia extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
@@ -308,23 +324,52 @@ public class JBMFarmacia extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        // la eliminacion es una baja logica, es decir, solo altero el campo
+        //estado y motivo (que solo se completa cuando es una baja)
+        // para detallar el motivo de la baja
+
+        FarmaciaVO FVO = new FarmaciaVO();
+        FarmaciaDAO FDAO = new FarmaciaDAO();
+
+        MotivoVO MVO = new MotivoVO();
+        MotivoDAO MDAO = new MotivoDAO();
+
+        if (jTextEstado.getText().equals("true")) { //corrobora que el campo estado de la farmacia se activo
+            //guarda primero el motivo en la tabla motivo
+            MVO.setMotivo(jTextAreaDetalleMotivo.getText());
+            MDAO.Agregar_MotivoVO(MVO);
+            //luego modifica los campos estado y motivo(teniendo en cuenta el id del ultimo
+            //motivo generado en la tabla motivo)
+            FVO.setId_Farmacia(Integer.parseInt(jTextBuscarFarmacia.getText()));
+            FVO.setId_Motivo(MDAO.id_M);//id_M es una variable global que toma el valor
+            FVO.setId_Estado(1);        //del ultimo id generado en la tabla motivo
+            FDAO.Eliminar_FarmaciaVO(FVO);//que sirve para vincular la farmacia con el motivo de la baja
+
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
         // TODO add your handling code here:
+        //Guarda los datos de la farmacia solo el nombre, direccion, email, telefono solamente
         FarmaciaVO FVO = new FarmaciaVO();
         FarmaciaDAO FDAO = new FarmaciaDAO();
+
+        //toma los datos de los jtext y los coloca en la instancia de farmacia
         FVO.setId_Farmacia(Integer.parseInt(jTextBuscarFarmacia.getText()));
         FVO.setNombre(jTextNombre.getText());
         FVO.setDireccion(jTextDireccion.getText());
         FVO.setEMail(jTextEmail.getText());
         FVO.setTelefono(Integer.parseInt(jTextTelefono.getText()));
+
+        //llama a la funcion que permite modificar los datos de la farmacia
         FDAO.Modificar_FarmaciaVO(FVO);
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jTextBuscarFarmaciaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextBuscarFarmaciaKeyReleased
         // TODO add your handling code here:
-       /*no me funciono para cuando vaya tipeando le vaya apareciendo las farmacias
+        /*no me funciono para cuando vaya tipeando le vaya apareciendo las farmacias
         
         FarmaciaDAO miFD= new FarmaciaDAO();
         FarmaciaVO miFVO = new FarmaciaVO();
@@ -362,8 +407,8 @@ public class JBMFarmacia extends javax.swing.JFrame {
         
         
         jTextCodigoPostal.setText(miLVO.getCodp());
-                */
-           
+         */
+
     }//GEN-LAST:event_jTextBuscarFarmaciaKeyReleased
 
     private void jTextProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextProvinciaActionPerformed
@@ -392,38 +437,39 @@ public class JBMFarmacia extends javax.swing.JFrame {
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         // TODO add your handling code here:
+        //este metodo realiza la busqueda por el Id de la farmacia;
         Integer id_f = Integer.valueOf(jTextBuscarFarmacia.getText());
         Integer id_l;
         Integer id_m;
         Integer id_e;
         Integer id_r;
-          
-        
+
         FarmaciaVO FVO = new FarmaciaVO();
         FarmaciaDAO FDAO = new FarmaciaDAO();
-        
+
         EstadoVO EVO = new EstadoVO();
         EstadoDAO EDAO = new EstadoDAO();
-        
+
         LocalidadVO LVO = new LocalidadVO();
-        LocalidadDAO LDAO= new LocalidadDAO();
-        
+        LocalidadDAO LDAO = new LocalidadDAO();
+
         RegionVO RVO = new RegionVO();
-        RegionDAO RDAO= new RegionDAO();
-        
-        
-        FVO = FDAO.Buscar_FarmaciaVO(id_f);
-        id_l= FVO.getId_Localidad();
-        id_m= FVO.getId_Motivo();
-        id_e= FVO.getId_Estado();
-        
-        LVO = LDAO.Buscar_LocalidadVO(id_l);
-        id_r = LVO.getId_Region();
-        
-        RVO = RDAO.Buscar_RegionVO(id_r);
-                
-        EVO = EDAO.Buscar_EstadoVO(id_e);
-        
+        RegionDAO RDAO = new RegionDAO();
+
+        FVO = FDAO.Buscar_FarmaciaVO(id_f); // busca la farmacia y se obtengo los Id de los campos
+        id_l = FVO.getId_Localidad();        //localidad, motivos y estado para vincular a esas tablas
+        id_m = FVO.getId_Motivo();
+        id_e = FVO.getId_Estado();
+
+        LVO = LDAO.Buscar_LocalidadVO(id_l); //con el id de la localidad obtengo el id de la region 
+        id_r = LVO.getId_Region();        // para obtener los campos de lcoalidad y vincular a la tabla region
+
+        RVO = RDAO.Buscar_RegionVO(id_r);    // Busca la region por id de region obtenido
+
+        EVO = EDAO.Buscar_EstadoVO(id_e);   // Busca el motivo por el id del motivo
+
+        //muestra los campos de la farmacia que se obtuvieron de todas las tablas en 
+        //los jtext del jframe
         jTextNombre.setText(FVO.getNombre());
         jTextProvincia.setText(RVO.getNombre());
         jTextDireccion.setText(FVO.getDireccion());
@@ -432,46 +478,9 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jTextLocalidad.setText(LVO.getNombre());
         jTextCodigoPostal.setText(LVO.getCodp());
         jTextEstado.setText(Boolean.toString(EVO.isEstado()));
-        
-       // jButtonGuardar.setEnabled(true);
-       // jButtonGuardar.setVisible(true);
+
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JBMFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JBMFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JBMFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JBMFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JBMFarmacia().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -483,6 +492,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -490,6 +500,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -499,6 +510,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextArea jTextAreaDetalleMotivo;
     private javax.swing.JTextField jTextBuscarFarmacia;
     private javax.swing.JTextField jTextCodigoPostal;
     private javax.swing.JTextField jTextDireccion;

@@ -5,30 +5,35 @@
  */
 package DAO;
 
-import VO.RegionVO;
+import VO.MotivoVO;
 import conexion.Conectar;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author maximiliano
  */
-public class RegionDAO {
+public class MotivoDAO {
 
-    public RegionVO Buscar_RegionVO(int id) {
-        RegionVO vo = new RegionVO();
+    public Integer id_M; //sirve para obtener la clave generada
+
+    public void Agregar_MotivoVO(MotivoVO vo) {
         Conectar conec = new Conectar();
-        String sql = "select * from REGION where Id_Region = ?;";
-        ResultSet rs = null;
+        String sql = "INSERT INTO motivo (Motivo) VALUES(?);";
         PreparedStatement ps = null;
         try {
-            ps = conec.getConnection().prepareStatement(sql);
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                vo.setNombre(rs.getString(2));
+            ps = conec.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            //el Statement.RETURN_GENERATED_KEYS sirve para recuperar el id generado
+            ps.setString(1, vo.getMotivo());
+            ps.executeUpdate();
+
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                id_M = generatedKeys.getInt(1);//asigna a la variable global Id_M la clave generada
             }
 
         } catch (SQLException ex) {
@@ -38,12 +43,11 @@ public class RegionDAO {
         } finally {
             try {
                 ps.close();
-                rs.close();
                 conec.desconectar();
             } catch (Exception ex) {
             }
+
         }
-        return vo;
     }
 
 }

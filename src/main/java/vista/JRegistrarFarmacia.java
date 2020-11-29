@@ -10,7 +10,7 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         //Cierra solo el JFrame y no todo el programa
-        setDefaultCloseOperation(JRegistrarFarmacia.DISPOSE_ON_CLOSE); 
+        setDefaultCloseOperation(JRegistrarFarmacia.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
@@ -236,14 +236,15 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        JRegistrarFarmacia farmacia = new JRegistrarFarmacia();
-        farmacia.setVisible(false);
+        //cierra la ventana del jframe
+        System.exit(0);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        //registra los datos cargados
         FarmaciaVO FarmVo = new FarmaciaVO();
         FarmaciaDAO FarmDAO = new FarmaciaDAO();
-
+        //la instancia toma los datos cargados en los jtext
         FarmVo.setNombre(txtFNombre.getText());
         FarmVo.setDireccion(txtFDirec.getText());
         FarmVo.setEMail(txtFEmail.getText());
@@ -251,44 +252,10 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
         FarmVo.setId_Localidad(Integer.parseInt(txtFLocalidad.getText()));
         FarmVo.setId_Motivo(Integer.parseInt(txtFMotivo.getText()));
         FarmVo.setId_Estado(1);
-
+        //llama a la funcion en el DAO que se conecta con la BD para cargar dichos datos
         FarmDAO.Agregar_FarmaciaVO(FarmVo);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JRegistrarFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JRegistrarFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JRegistrarFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JRegistrarFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JRegistrarFarmacia().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

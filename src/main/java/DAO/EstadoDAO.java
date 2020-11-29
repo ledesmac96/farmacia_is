@@ -16,28 +16,29 @@ import java.sql.SQLException;
  * @author maximiliano
  */
 public class EstadoDAO {
-    
-    public void Modificar_EstadoVO(EstadoVO vo){
+
+    public void Modificar_EstadoVO(EstadoVO vo) {
         Conectar conec = new Conectar();
         String sql = "UPDATE ESTADO SET Estado = ? WHERE Id_Estado = ?;";
         PreparedStatement ps = null;
-        try{
+        try {
             ps = conec.getConnection().prepareStatement(sql);
             ps.setInt(1, vo.getId_Estado());
             ps.setBoolean(2, vo.isEstado());
             ps.executeUpdate();
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
-        }finally{
-            try{
+        } finally {
+            try {
                 ps.close();
                 conec.desconectar();
-            }catch(Exception ex){}
+            } catch (Exception ex) {
+            }
         }
     }
-    
+
     public EstadoVO Buscar_EstadoVO(int id) {
         EstadoVO vo = new EstadoVO();
         Conectar conec = new Conectar();
@@ -49,8 +50,8 @@ public class EstadoDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
 
-            if (rs.next()){
-                //FarmaciaVO vo = new FarmaciaVO();
+            if (rs.next()) {
+
                 vo.setEstado(rs.getBoolean(2));
             }
 
@@ -68,6 +69,5 @@ public class EstadoDAO {
         }
         return vo;
     }
-    
-    
+
 }
