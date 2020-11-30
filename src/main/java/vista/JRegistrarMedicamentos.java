@@ -5,10 +5,14 @@
  */
 package vista;
 
-/**
- *
- * @author Chant
- */
+//***********************************************************************************************************
+import DAO.MedicamentosDAO;
+import VO.MedicamentosVO;
+
+//DUDAA, EN LAS VENTANAS, POR QUE SE INGRESA LOS DATOS DEL LABORATORIO TAMBIÉN APARTE ID?? ES NECESARIO??
+//SI EL ID DEL LABORATORIO ES NUEVO, PREVIEMENTE DEBE ESTAR CARGADO ESTE LABORATORIO CREO, EN CASA DE QUE NO EXISTA
+//SE DEBE NOTIFICAR QUE SE ESTÁ INGRESANDO UN ID DE LAB NUEVO Y PEDIRLE QUE COSO...?
+//***********************************************************************************************************
 public class JRegistrarMedicamentos extends javax.swing.JFrame {
 
     /**
@@ -18,6 +22,7 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
         initComponents();
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        setDefaultCloseOperation(JRegistrarMedicamentos.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -35,20 +40,20 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
-        jTextField9 = new javax.swing.JTextField();
+        txtMedIDLab = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtMedNombre = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtMedPrecio = new javax.swing.JTextField();
+        txtMedDetalle = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtMedCant = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jTextField6 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -63,7 +68,7 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
         jSeparator10 = new javax.swing.JSeparator();
         jTextField10 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,16 +96,16 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, 20));
         jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 250, 10));
 
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField9.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField9.setAlignmentX(0.0F);
-        jTextField9.setAlignmentY(0.0F);
-        jTextField9.setBorder(null);
-        jTextField9.setOpaque(false);
-        jTextField9.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField9.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 230, 30));
+        txtMedIDLab.setBackground(new java.awt.Color(255, 255, 255));
+        txtMedIDLab.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        txtMedIDLab.setForeground(new java.awt.Color(0, 0, 0));
+        txtMedIDLab.setAlignmentX(0.0F);
+        txtMedIDLab.setAlignmentY(0.0F);
+        txtMedIDLab.setBorder(null);
+        txtMedIDLab.setOpaque(false);
+        txtMedIDLab.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtMedIDLab.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtMedIDLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 230, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -117,16 +122,16 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
         jLabel4.setText("Nombre");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 20));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setAlignmentX(0.0F);
-        jTextField2.setAlignmentY(0.0F);
-        jTextField2.setBorder(null);
-        jTextField2.setOpaque(false);
-        jTextField2.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField2.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 230, 30));
+        txtMedNombre.setBackground(new java.awt.Color(255, 255, 255));
+        txtMedNombre.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtMedNombre.setForeground(new java.awt.Color(0, 0, 0));
+        txtMedNombre.setAlignmentX(0.0F);
+        txtMedNombre.setAlignmentY(0.0F);
+        txtMedNombre.setBorder(null);
+        txtMedNombre.setOpaque(false);
+        txtMedNombre.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtMedNombre.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txtMedNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 230, 30));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 250, 10));
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
@@ -135,27 +140,27 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 20));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 90, 10));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setAlignmentX(0.0F);
-        jTextField3.setAlignmentY(0.0F);
-        jTextField3.setBorder(null);
-        jTextField3.setOpaque(false);
-        jTextField3.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField3.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 70, 30));
+        txtMedPrecio.setBackground(new java.awt.Color(255, 255, 255));
+        txtMedPrecio.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtMedPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        txtMedPrecio.setAlignmentX(0.0F);
+        txtMedPrecio.setAlignmentY(0.0F);
+        txtMedPrecio.setBorder(null);
+        txtMedPrecio.setOpaque(false);
+        txtMedPrecio.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtMedPrecio.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txtMedPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 70, 30));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setAlignmentX(0.0F);
-        jTextField4.setAlignmentY(0.0F);
-        jTextField4.setBorder(null);
-        jTextField4.setOpaque(false);
-        jTextField4.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField4.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 230, 30));
+        txtMedDetalle.setBackground(new java.awt.Color(255, 255, 255));
+        txtMedDetalle.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtMedDetalle.setForeground(new java.awt.Color(0, 0, 0));
+        txtMedDetalle.setAlignmentX(0.0F);
+        txtMedDetalle.setAlignmentY(0.0F);
+        txtMedDetalle.setBorder(null);
+        txtMedDetalle.setOpaque(false);
+        txtMedDetalle.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtMedDetalle.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txtMedDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 230, 30));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 250, 10));
 
         jLabel6.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
@@ -168,16 +173,16 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
         jLabel7.setText("Unidades");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, 20));
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setAlignmentX(0.0F);
-        jTextField5.setAlignmentY(0.0F);
-        jTextField5.setBorder(null);
-        jTextField5.setOpaque(false);
-        jTextField5.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextField5.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 70, 30));
+        txtMedCant.setBackground(new java.awt.Color(255, 255, 255));
+        txtMedCant.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtMedCant.setForeground(new java.awt.Color(0, 0, 0));
+        txtMedCant.setAlignmentX(0.0F);
+        txtMedCant.setAlignmentY(0.0F);
+        txtMedCant.setBorder(null);
+        txtMedCant.setOpaque(false);
+        txtMedCant.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtMedCant.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txtMedCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 70, 30));
         jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 90, 10));
 
         jTextField6.setBackground(new java.awt.Color(255, 255, 255));
@@ -259,14 +264,14 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 630, 160, 50));
 
-        jButton7.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        jButton7.setText("Guardar");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, 160, 50));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, 160, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,9 +293,18 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        MedicamentosDAO MedDAO = new MedicamentosDAO();
+        MedicamentosVO MedVO = new MedicamentosVO();
+
+        MedVO.setId_Laboratorio(Integer.parseInt(txtMedIDLab.getText()));
+        MedVO.setNombre(txtMedNombre.getText());
+        MedVO.setDetalle(txtMedDetalle.getText());
+        MedVO.setPrecio(Float.parseFloat(txtMedPrecio.getText()));
+        MedVO.setUnidades_Disponibles(Integer.parseInt(txtMedCant.getText()));
+
+        MedDAO.AgregarMedicamento(MedVO);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,11 +349,8 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -365,13 +376,13 @@ public class JRegistrarMedicamentos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtMedCant;
+    private javax.swing.JTextField txtMedDetalle;
+    private javax.swing.JTextField txtMedIDLab;
+    private javax.swing.JTextField txtMedNombre;
+    private javax.swing.JTextField txtMedPrecio;
     // End of variables declaration//GEN-END:variables
 }

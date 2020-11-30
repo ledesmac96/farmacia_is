@@ -2,24 +2,83 @@ package vista;
 
 import DAO.FarmaciaDAO;
 import DAO.LocalidadDAO;
+import DAO.MedicamentosDAO;
+import Tabla.Tabla_MedicamentosVO;
+import VO.DatosPedidosVO;
 import VO.FarmaciaVO;
 import VO.LocalidadVO;
+import VO.MedicamentoDatosPedidoVO;
+import VO.MedicamentosVO;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class JRegistrarPedido extends javax.swing.JFrame {
-    
+
+    ArrayList<MedicamentosVO> list, listFiltro;
+    FarmaciaVO fvos;
+    FarmaciaDAO farmDAO;
+    LocalidadDAO ldao;
+    private DefaultListModel listModel;
+    Tabla_MedicamentosVO medVO;
+    float total = 0;
+    int idSelect = -1;
+
     public JRegistrarPedido() {
         initComponents();
+        fvos = new FarmaciaVO();
+        farmDAO = new FarmaciaDAO();
+        ldao = new LocalidadDAO();
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         txtFMedicamento.setEditable(false);
         txtFMedicamento.setEnabled(false);
+        txtFCant.setEditable(false);
+        txtFCant.setEnabled(false);
+        listModel = new DefaultListModel();
+        jList.setModel(listModel);
         jPopupMenu.add(jPanelList);
+        setDefaultCloseOperation(JRegistrarFarmacia.DISPOSE_ON_CLOSE);
+
     }
-    
+
+    private void loadActions() {
+        jList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                medVO = new Tabla_MedicamentosVO();
+                String s = (String) jList.getSelectedValue();
+                String[] parts = s.split(" - ");
+                String part2 = parts[0];
+                idSelect = Integer.valueOf(part2);
+                for (MedicamentosVO med : list) {
+                    if (idSelect == med.getId_Medicamento()) {
+                        txtFMedicamento.setText(med.getId_Medicamento() + " - " + med.getDetalle());
+                        break;
+                    }
+                }
+            }
+        });
+
+    }
+
     public void getAllMedicamentos() {
-        
+        MedicamentosDAO mdao = new MedicamentosDAO();
+        list = mdao.getAll_MedicamentosVO();
+    }
+
+    private void buscarMedicamento(String search) {
+        listFiltro = new ArrayList<>();
+        for (MedicamentosVO medicamentosVO : list) {
+            if (medicamentosVO.getNombre().contains(search)) {
+                listFiltro.add(medicamentosVO);
+            }
+        }
     }
 
     /**
@@ -38,7 +97,7 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnGuardarPedido = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -55,8 +114,11 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         txtFMedicamento = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        txtFCant = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        btnEliminarFila1 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         btnGenFactura = new javax.swing.JButton();
         btnBuscarFarm = new javax.swing.JButton();
         jLabelNombre = new javax.swing.JLabel();
@@ -65,6 +127,10 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabelCP = new javax.swing.JLabel();
         jLabelTel = new javax.swing.JLabel();
         jLabelEmail = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabelTotal = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txtFNota = new javax.swing.JTextField();
 
         jList.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jScrollPane2.setViewportView(jList);
@@ -94,54 +160,58 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(22, 39, 49));
         jLabel1.setText("Registrar pedido");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 30, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_add.png")); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 30, 20));
+
+        btnGuardarPedido.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnGuardarPedido.setText("Guardar");
+        btnGuardarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGuardarPedidoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 640, 120, 30));
+        jPanel1.add(btnGuardarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 650, 120, 30));
 
         jLabel4.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(22, 39, 49));
         jLabel4.setText("Nombre:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(22, 39, 49));
         jLabel6.setText("Localidad:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 20));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, 20));
 
         jLabel7.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(22, 39, 49));
         jLabel7.setText("Código postal:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, 20));
 
         jLabel8.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(22, 39, 49));
         jLabel8.setText("Dirección:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, 20));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, 20));
 
         jLabel9.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(22, 39, 49));
         jLabel9.setText("E-Mail:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, 20));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, 20));
 
         jLabel10.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(22, 39, 49));
         jLabel10.setText("Teléfono:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, 20));
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, 20));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chant\\Documents\\NetBeansProjects\\FarmaciaIS\\src\\main\\java\\resources\\icon_search.png")); // NOI18N
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(22, 39, 49));
         jLabel11.setText("Buscar Farmacia: ");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, 20));
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 250, 10));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, 20));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 250, 10));
 
         txtFBuscarFarm.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         txtFBuscarFarm.setAlignmentX(0.0F);
@@ -151,7 +221,7 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         txtFBuscarFarm.setOpaque(false);
         txtFBuscarFarm.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtFBuscarFarm.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(txtFBuscarFarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 230, 20));
+        jPanel1.add(txtFBuscarFarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 230, 20));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -161,33 +231,25 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(22, 39, 49));
         jLabel3.setText("Pedido");
         jLabel3.setAlignmentY(0.0F);
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 60, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 60, -1));
 
         jTable1.setAutoCreateRowSorter(true);
-        jTable1.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Código Med.", "Descripción", "Cantidad", "Total"
+                "Código Med.", "Nombre", "Descripción", "Cantidad", "Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -204,7 +266,7 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jTable1.setGridColor(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 460, 290));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 630, 290));
 
         txtFMedicamento.setBackground(java.awt.SystemColor.info);
         txtFMedicamento.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
@@ -228,28 +290,62 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         jLabel13.setText("Buscar Medicamento");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
 
-        jButton5.setBackground(new java.awt.Color(22, 39, 49));
-        jButton5.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Agregar");
-        jButton5.setAlignmentY(0.0F);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setBackground(new java.awt.Color(22, 39, 49));
+        btnAgregar.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar");
+        btnAgregar.setAlignmentY(0.0F);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 45, -1, 20));
+        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, 20));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 460, 370));
-
-        jButton4.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        jButton4.setText("Cancelar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        txtFCant.setBackground(java.awt.SystemColor.info);
+        txtFCant.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        txtFCant.setForeground(new java.awt.Color(0, 0, 0));
+        txtFCant.setAlignmentX(0.0F);
+        txtFCant.setAlignmentY(0.0F);
+        txtFCant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                txtFCantActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 640, 120, 30));
+        txtFCant.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFCantKeyReleased(evt);
+            }
+        });
+        jPanel2.add(txtFCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 50, 30));
+
+        jLabel14.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Cantidad");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 70, 20));
+
+        btnEliminarFila1.setBackground(new java.awt.Color(22, 39, 49));
+        btnEliminarFila1.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        btnEliminarFila1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarFila1.setText("Eliminar");
+        btnEliminarFila1.setAlignmentY(0.0F);
+        btnEliminarFila1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarFila1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEliminarFila1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, 20));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 630, 370));
+
+        btnCancelar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 650, 120, 30));
 
         btnGenFactura.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         btnGenFactura.setText("Imprimir");
@@ -258,7 +354,7 @@ public class JRegistrarPedido extends javax.swing.JFrame {
                 btnGenFacturaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 640, 120, 30));
+        jPanel1.add(btnGenFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 650, 120, 30));
 
         btnBuscarFarm.setBackground(new java.awt.Color(22, 39, 49));
         btnBuscarFarm.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
@@ -270,31 +366,66 @@ public class JRegistrarPedido extends javax.swing.JFrame {
                 btnBuscarFarmActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarFarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, 20));
+        jPanel1.add(btnBuscarFarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, -1, 20));
 
         jLabelNombre.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jPanel1.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 390, -1));
+        jPanel1.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 390, -1));
 
         jLabelLoc.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jPanel1.add(jLabelLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 140, -1));
+        jPanel1.add(jLabelLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 140, -1));
 
         jLabelDirec.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jPanel1.add(jLabelDirec, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 380, -1));
+        jPanel1.add(jLabelDirec, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 380, -1));
 
         jLabelCP.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jPanel1.add(jLabelCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 110, -1));
+        jPanel1.add(jLabelCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 110, -1));
 
         jLabelTel.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jPanel1.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 160, -1));
+        jPanel1.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 160, -1));
 
         jLabelEmail.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jPanel1.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 400, -1));
+        jPanel1.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 400, -1));
+
+        jLabel5.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("TOTAL:");
+        jLabel5.setAlignmentY(0.0F);
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 610, -1, 30));
+
+        jLabelTotal.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        jLabelTotal.setForeground(new java.awt.Color(33, 108, 42));
+        jLabelTotal.setText("$1550,88");
+        jPanel1.add(jLabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 610, 100, 30));
+
+        jLabel15.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Nota:");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, -1, 30));
+
+        txtFNota.setBackground(java.awt.SystemColor.info);
+        txtFNota.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        txtFNota.setForeground(new java.awt.Color(0, 0, 0));
+        txtFNota.setAlignmentX(0.0F);
+        txtFNota.setAlignmentY(0.0F);
+        txtFNota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFNotaActionPerformed(evt);
+            }
+        });
+        txtFNota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFNotaKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtFNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 610, 420, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,29 +437,88 @@ public class JRegistrarPedido extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnGuardarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPedidoActionPerformed
+        Calendar fecha = new GregorianCalendar();
+        int anio = fecha.get(Calendar.YEAR);
+        int mes = fecha.get(Calendar.MONTH);
+        int dia = fecha.get(Calendar.DAY_OF_MONTH);
+        int hora = fecha.get(Calendar.HOUR_OF_DAY);
+        //int minuto = fecha.get(Calendar.MINUTE);
+        //int segundo = fecha.get(Calendar.SECOND);
+        //String fechaHora = String.format("%s/%s/%s - %02d:%02d:%02d", dia, mes, anio, hora, minuto, segundo);
+        String fechaHora = String.format("%s-%s-%s", anio, mes, dia);
+        String nota = txtFNota.getText();
+        int idFarm = Integer.valueOf(txtFBuscarFarm.getText());
+        
+        DatosPedidosVO pedidosVO = new DatosPedidosVO(fechaHora, total, nota, idFarm, 1);
+       
+        ArrayList<MedicamentoDatosPedidoVO> list = new ArrayList();
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+            
+            int id = (int) jTable1.getValueAt(i, 0);
+            int cant = (int) jTable1.getValueAt(i, 3);
+                        
+            MedicamentoDatosPedidoVO mvo = new MedicamentoDatosPedidoVO(id, 0, cant);
+            list.add(mvo);           
+        }
+        
+        MedicamentosDAO dAO = new MedicamentosDAO();
+        dAO.registerPedido_MedicamentosVO(pedidosVO, list);
+        
+    }//GEN-LAST:event_btnGuardarPedidoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        JRegistrarPedido ped = new JRegistrarPedido();
+        ped.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGenFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenFacturaActionPerformed
-        // TODO add your handling code here:
+        /*String path = "";
+        JFileChooser jfc = new JFileChooser();
+        jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int x = jfc.showSaveDialog(this);
+
+        if (x == JFileChooser.APPROVE_OPTION) {
+            path = jfc.getSelectedFile().getPath();
+        }*/
+        
+        //Esta función imprime todo el JTable, pero no correctamente
+        /*MessageFormat header = new MessageFormat("Pedido de Medicamentos:");
+        MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+        try {
+            jTable1.print(JTable.PrintMode.NORMAL, header, footer);
+        } catch (PrinterException ex) {
+            Logger.getLogger(JRegistrarPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
+        ArrayList<MedicamentosVO> list = new ArrayList();
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+            
+            int id = (int) jTable1.getValueAt(i, 0);
+            int cant = (int) jTable1.getValueAt(i, 3);
+            float subtot = (float) jTable1.getValueAt(i, 4);
+            
+            MedicamentosVO mvo = new MedicamentosVO(id, jTable1.getValueAt(i, 1).toString(), 
+                    jTable1.getValueAt(i, 2).toString(), cant, subtot);
+            list.add(mvo);
+                        
+        }
+        
+      
+
     }//GEN-LAST:event_btnGenFacturaActionPerformed
 
     private void btnBuscarFarmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFarmActionPerformed
         int id = Integer.valueOf(txtFBuscarFarm.getText());
-        FarmaciaVO fvos = new FarmaciaVO();
-        FarmaciaDAO farmDAO = new FarmaciaDAO();
-        LocalidadDAO ldao = new LocalidadDAO();
+
         fvos = farmDAO.Buscar_FarmaciaVO(id);
         LocalidadVO lvo = ldao.Buscar_LocalidadVO(fvos.getId_Localidad());
 
         if (fvos != null) {
             txtFMedicamento.setEditable(true);
             txtFMedicamento.setEnabled(true);
+            txtFCant.setEditable(true);
+            txtFCant.setEnabled(true);
             jLabelNombre.setText(fvos.getNombre());
             jLabelDirec.setText(fvos.getDireccion());
             jLabelLoc.setText(lvo.getNombre());
@@ -336,11 +526,13 @@ public class JRegistrarPedido extends javax.swing.JFrame {
             jLabelTel.setText(String.valueOf(fvos.getTelefono()));
             jLabelEmail.setText(fvos.getEMail());
             getAllMedicamentos();
-        }
-        else{
+            loadActions();
+        } else {
             System.out.println("No existe la Farmacia ingresada");
             txtFMedicamento.setEditable(false);
             txtFMedicamento.setEnabled(false);
+            txtFCant.setEditable(false);
+            txtFCant.setEnabled(false);
             jLabelNombre.setText("");
             jLabelDirec.setText("");
             jLabelLoc.setText("");
@@ -357,15 +549,78 @@ public class JRegistrarPedido extends javax.swing.JFrame {
 
     private void txtFMedicamentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFMedicamentoKeyReleased
         String search = txtFMedicamento.getText().trim();
-        if (!search.equals("")){
-            //System.out.println(search);
+        if (!search.equals("")) {
+            listModel.removeAllElements();
+            buscarMedicamento(search);
+            for (MedicamentosVO medicamentosVO : listFiltro) {
+                listModel.addElement(medicamentosVO.getId_Medicamento() + " - " + medicamentosVO.getDetalle());
+            }
+
             jPopupMenu.show(txtFMedicamento, 0, txtFMedicamento.getHeight());
         }
     }//GEN-LAST:event_txtFMedicamentoKeyReleased
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        int cant = Integer.valueOf(txtFCant.getText());
+        medVO = new Tabla_MedicamentosVO();
+        for (MedicamentosVO med : list) {
+            if (idSelect == med.getId_Medicamento()) {
+                medVO.visualizar_MedicamentosVO(jTable1, med.getId_Medicamento(), jLabelTotal, cant);
+                txtFCant.setText("");
+                txtFMedicamento.setText("");
+                System.out.println("");
+                total = 0;
+                for (int i = 0; i < jTable1.getRowCount(); i++) {
+                    float amount = Float.parseFloat(jTable1.getValueAt(i, 4) + "");
+                    total = amount + total;
+                }
+                //jTable1.setValueAt(total, jTable1.getSelectedRow(), 2);
+                jLabelTotal.setText(String.valueOf("$" + total));
+                break;
+            }
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtFCantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFCantActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_txtFCantActionPerformed
+
+    private void txtFCantKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFCantKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFCantKeyReleased
+
+    private void btnEliminarFila1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFila1ActionPerformed
+        DefaultTableModel dt = (DefaultTableModel) jTable1.getModel();
+        if (jTable1.getSelectedRowCount() == 1) {
+            medVO = new Tabla_MedicamentosVO();
+            String idS = jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 0).toString();
+            int id = Integer.valueOf(idS);
+            for (MedicamentosVO med : list) {
+                if (id == med.getId_Medicamento()) {
+                    float amount = Float.parseFloat(jTable1.getValueAt(jTable1.getSelectedRow(), 4) + "");
+                    total = total - amount;
+                    //jTable1.setValueAt(total, jTable1.getSelectedRow(), 2);
+                    jLabelTotal.setText(String.valueOf("$" + total));
+                    break;
+                }
+            }
+            dt.removeRow(jTable1.getSelectedRow());
+        } else {
+            if (jTable1.getSelectedRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Tabla vacía.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecciona una fila...");
+            }
+        }
+    }//GEN-LAST:event_btnEliminarFila1ActionPerformed
+
+    private void txtFNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNotaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFNotaActionPerformed
+
+    private void txtFNotaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFNotaKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFNotaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -381,16 +636,21 @@ public class JRegistrarPedido extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JRegistrarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JRegistrarPedido.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JRegistrarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JRegistrarPedido.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JRegistrarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JRegistrarPedido.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JRegistrarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JRegistrarPedido.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -410,19 +670,23 @@ public class JRegistrarPedido extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscarFarm;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminarFila1;
     private javax.swing.JButton btnGenFactura;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnGuardarPedido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -433,6 +697,7 @@ public class JRegistrarPedido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLoc;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelTel;
+    private javax.swing.JLabel jLabelTotal;
     private javax.swing.JList<String> jList;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -443,8 +708,9 @@ public class JRegistrarPedido extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtFBuscarFarm;
+    private javax.swing.JTextField txtFCant;
     private javax.swing.JTextField txtFMedicamento;
+    private javax.swing.JTextField txtFNota;
     // End of variables declaration//GEN-END:variables
-
 
 }

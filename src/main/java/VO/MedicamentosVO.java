@@ -1,6 +1,4 @@
-
 package VO;
-
 
 public class MedicamentosVO {
     private Integer Id_Medicamento;
@@ -12,6 +10,22 @@ public class MedicamentosVO {
     private Integer Id_Motivo;
     private Integer Id_Estado;
 
+    
+    //Constructor para crear un arreglo de medicamentos al momento de generar un
+    //archivo PDF en JRegistrarPedido
+    public MedicamentosVO(Integer Id_Medicamento, String Nombre, String Detalle, Integer Unidades_Disponibles, Float Precio) {
+        this.Id_Medicamento = Id_Medicamento;
+        this.Nombre = Nombre;
+        this.Detalle = Detalle;
+        this.Unidades_Disponibles = Unidades_Disponibles;
+        this.Precio = Precio;
+    }
+    
+    public MedicamentosVO() {
+       
+    }
+    
+    
     /**
      * @return the Id_Medicamento
      */
@@ -19,6 +33,10 @@ public class MedicamentosVO {
         return Id_Medicamento;
     }
 
+    public void setId_Medicamento(Integer Id_Medicamento) {
+        this.Id_Medicamento = Id_Medicamento;
+    }
+    
     /**
      * @return the Nombre
      */
