@@ -13,7 +13,7 @@ public class FarmaciaDAO {
 
     public void Agregar_FarmaciaVO(FarmaciaVO vo) {
         Conectar conec = new Conectar();
-        String sql = "INSERT INTO DATOS_FARMACIA (Nombre, Direccion, E_Mail, Telefono, LOCALIDAD_Id_Localidad, MOTIVO_Id_Motivo, ESTADO_Id_Estado) VALUES( ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO DATOS_FARMACIA (Nombre, Direccion, E_Mail, Telefono, LOCALIDAD_Id_Localidad, ESTADO_Id_Estado) VALUES( ?, ?, ?, ?, ?, ?);";
         PreparedStatement ps = null;
         try {
             ps = conec.getConnection().prepareStatement(sql);
@@ -22,8 +22,7 @@ public class FarmaciaDAO {
             ps.setString(3, vo.getEMail());
             ps.setInt(4, vo.getTelefono());
             ps.setInt(5, vo.getId_Localidad());
-            ps.setInt(6, vo.getId_Motivo());
-            ps.setInt(7, vo.getId_Estado());
+            ps.setInt(6, vo.getId_Estado());
 
             ps.executeUpdate();
 
@@ -143,6 +142,7 @@ public class FarmaciaDAO {
     }
 
     public void Eliminar_FarmaciaVO(FarmaciaVO vo) {
+        
         Integer id = vo.getId_Farmacia();
         Conectar conec = new Conectar();
         String sql = "UPDATE datos_farmacia SET MOTIVO_Id_Motivo = ?,ESTADO_Id_Estado = ? WHERE Id_Farmacia =" + id + ";";
@@ -163,7 +163,6 @@ public class FarmaciaDAO {
                 JOptionPane.showMessageDialog(null, "Se ha Eliminado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
                 ps.close();
                 conec.desconectar();
-                System.exit(0);
             } catch (Exception ex) {
             }
         }
