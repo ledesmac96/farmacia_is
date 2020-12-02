@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 public class FarmaciaDAO {
@@ -165,6 +166,37 @@ public class FarmaciaDAO {
                 conec.desconectar();
             } catch (Exception ex) {
             }
+        }
+    }
+    
+    
+    public void Consultar_Farmacia(JComboBox jcbFarmacia) {
+        Conectar conec = new Conectar();
+       // String sql = "SELECT Nombre FROM REGION ORDER BY Nombre ASC;"; para mostrar ordenado
+        String sql = "SELECT Nombre FROM DATOS_FARMACIA;"; //pero como quiero obtener la posicion que me indica el indice
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        try {
+            ps = conec.getConnection().prepareStatement(sql);
+                        
+            rs = ps.executeQuery();
+
+            jcbFarmacia.addItem("Seleccion una Farmacia");
+            
+            while(rs.next()){
+            jcbFarmacia.addItem(rs.getString("Nombre"));
+            }
+            
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }  finally {
+            try {
+                ps.close();
+                conec.desconectar();
+            } catch (Exception ex) {
+            }
+
         }
     }
 

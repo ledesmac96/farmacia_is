@@ -12,6 +12,9 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         
+        
+        //utiliza 2 combobox para mostrar las provicias y las localidades que se encuentran 
+        //registradas en la BD
         RegionDAO RDAO = new RegionDAO();
         RDAO.Consultar_Region(jComboBoxProvincia);
         
@@ -31,7 +34,6 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        txtFNombre = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -44,10 +46,11 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JSeparator();
         txtFEmail = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        txtFDirec = new javax.swing.JTextField();
+        txtFNombre = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         jComboBoxProvincia = new javax.swing.JComboBox<>();
         jComboBoxLocalidad = new javax.swing.JComboBox<>();
+        txtFDirec1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,15 +80,6 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(22, 39, 49));
         jLabel4.setText("Nombre");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, 20));
-
-        txtFNombre.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        txtFNombre.setAlignmentX(0.0F);
-        txtFNombre.setAlignmentY(0.0F);
-        txtFNombre.setBorder(null);
-        txtFNombre.setOpaque(false);
-        txtFNombre.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        txtFNombre.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(txtFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 230, 30));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 250, 10));
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
@@ -140,19 +134,28 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
         jPanel1.add(txtFEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 230, 30));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 250, 10));
 
-        txtFDirec.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        txtFDirec.setAlignmentX(0.0F);
-        txtFDirec.setAlignmentY(0.0F);
-        txtFDirec.setBorder(null);
-        txtFDirec.setOpaque(false);
-        txtFDirec.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        txtFDirec.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(txtFDirec, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 230, 30));
+        txtFNombre.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtFNombre.setAlignmentX(0.0F);
+        txtFNombre.setAlignmentY(0.0F);
+        txtFNombre.setBorder(null);
+        txtFNombre.setOpaque(false);
+        txtFNombre.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtFNombre.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 230, 30));
         jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 250, 10));
 
         jPanel1.add(jComboBoxProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 240, -1));
 
         jPanel1.add(jComboBoxLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 240, -1));
+
+        txtFDirec1.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtFDirec1.setAlignmentX(0.0F);
+        txtFDirec1.setAlignmentY(0.0F);
+        txtFDirec1.setBorder(null);
+        txtFDirec1.setOpaque(false);
+        txtFDirec1.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtFDirec1.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtFDirec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 230, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,12 +179,12 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
         FarmaciaVO FarmVo = new FarmaciaVO();
         FarmaciaDAO FarmDAO = new FarmaciaDAO();
         //la instancia toma los datos cargados en los jtext
-        FarmVo.setNombre(txtFNombre.getText());
         
+        FarmVo.setNombre(txtFNombre.getText());
         //Integer Id_P = jComboBoxProvincia.getSelectedIndex(); no me interesa guardar la region o
         //la provincia porque ya en la localidad tengo el id que va vincular la provincia
                                 
-        FarmVo.setDireccion(txtFDirec.getText());
+        FarmVo.setDireccion(txtFDirec1.getText());
         FarmVo.setEMail(txtFEmail.getText());
         FarmVo.setTelefono(Integer.parseInt(txtFTel.getText()));
         
@@ -220,7 +223,7 @@ public class JRegistrarFarmacia extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JTextField txtFDirec;
+    private javax.swing.JTextField txtFDirec1;
     private javax.swing.JTextField txtFEmail;
     private javax.swing.JTextField txtFNombre;
     private javax.swing.JTextField txtFTel;

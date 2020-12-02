@@ -31,8 +31,15 @@ public class JBMFarmacia extends javax.swing.JFrame {
         initComponents();
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-        jTextAreaDetalleMotivo.setEditable(false);
         
+        //utiliza un combobox para seleccionar la farmacia que se desea mostrar los datos
+        FarmaciaDAO FDAO = new FarmaciaDAO();
+        FDAO.Consultar_Farmacia(jComboBoxFarmacia);
+        
+        jTextAreaDetalleMotivo.setEditable(false);// solo se activa cuando se busca y se carga
+                                                  //  en el jframe y el campo estado es true
+        
+        // estos campos estan desactivados porque no se pueden modificar
         jTextProvincia.setEnabled(false);
         jTextLocalidad.setEnabled(false);
         jTextCodigoPostal.setEnabled(false);
@@ -77,8 +84,6 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jTextDireccion = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
-        jTextBuscarFarmacia = new javax.swing.JTextField();
-        jSeparator9 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jSeparator10 = new javax.swing.JSeparator();
@@ -88,6 +93,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDetalleMotivo = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
+        jComboBoxFarmacia = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -245,32 +251,6 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 250, 10));
         jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 250, 10));
 
-        jTextBuscarFarmacia.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        jTextBuscarFarmacia.setAlignmentX(0.0F);
-        jTextBuscarFarmacia.setAlignmentY(0.0F);
-        jTextBuscarFarmacia.setBorder(null);
-        jTextBuscarFarmacia.setOpaque(false);
-        jTextBuscarFarmacia.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-        jTextBuscarFarmacia.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jTextBuscarFarmacia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextBuscarFarmaciaActionPerformed(evt);
-            }
-        });
-        jTextBuscarFarmacia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextBuscarFarmaciaKeyReleased(evt);
-            }
-        });
-        jPanel1.add(jTextBuscarFarmacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 230, 30));
-
-        jSeparator9.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jSeparator9KeyReleased(evt);
-            }
-        });
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 250, 30));
-
         jLabel11.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(22, 39, 49));
         jLabel11.setText("Buscar Farmacia: ");
@@ -314,6 +294,8 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jLabel3.setText("Detalle del Motivo de la baja");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
 
+        jPanel1.add(jComboBoxFarmacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 250, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -349,13 +331,13 @@ public class JBMFarmacia extends javax.swing.JFrame {
             MDAO.Agregar_MotivoVO(MVO);
             //luego modifica los campos estado y motivo(teniendo en cuenta el id del ultimo
             //motivo generado en la tabla motivo)
-            FVO.setId_Farmacia(Integer.parseInt(jTextBuscarFarmacia.getText()));
+            FVO.setId_Farmacia(jComboBoxFarmacia.getSelectedIndex());
             FVO.setId_Motivo(MDAO.id_M);//id_M es una variable global que toma el valor
             FVO.setId_Estado(1);        //del ultimo id generado en la tabla motivo
             FDAO.Eliminar_FarmaciaVO(FVO);//que sirve para vincular la farmacia con el motivo de la baja
 
         } else{
-            JOptionPane.showMessageDialog(null, "no se puede Eliminar la farmacia porque no existe", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "La farmacia se encuentra momentaneamente fuera de servio", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }//GEN-LAST:event_jButtonEliminarActionPerformed
@@ -367,7 +349,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
         FarmaciaDAO FDAO = new FarmaciaDAO();
 
         //toma los datos de los jtext y los coloca en la instancia de farmacia
-        FVO.setId_Farmacia(Integer.parseInt(jTextBuscarFarmacia.getText()));
+        FVO.setId_Farmacia(jComboBoxFarmacia.getSelectedIndex());
         FVO.setNombre(jTextNombre.getText());
         FVO.setDireccion(jTextDireccion.getText());
         FVO.setEMail(jTextEmail.getText());
@@ -377,50 +359,6 @@ public class JBMFarmacia extends javax.swing.JFrame {
         FDAO.Modificar_FarmaciaVO(FVO);
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
-    private void jTextBuscarFarmaciaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextBuscarFarmaciaKeyReleased
-        // TODO add your handling code here:
-        /*no me funciono para cuando vaya tipeando le vaya apareciendo las farmacias
-        
-        FarmaciaDAO miFD= new FarmaciaDAO();
-        FarmaciaVO miFVO = new FarmaciaVO();
-        
-        EstadoVO miEVO = new EstadoVO();
-        EstadoDAO miEDAO = new EstadoDAO();
-        
-        LocalidadVO miLVO = new LocalidadVO();
-        LocalidadDAO miLDAO= new LocalidadDAO();
-        
-        int idmotivo;
-        int idlocalidad;
-        int idestado;
-        
-        String texto = jTextBuscarFarmacia.getText();
-        
-        miFVO = miFD.Buscar_FarmaciaVO_Ingreso_Texto(texto);
-        
-        idlocalidad = miFVO.getId_Localidad();
-       
-        idestado = miFVO.getId_Estado();
-        
-        
-        jTextNombre.setText(miFVO.getNombre());
-        jTextDireccion.setText(miFVO.getDireccion());
-        jTextEmail.setText(miFVO.getEMail());
-        jTextTelefono.setText(Integer.toString(miFVO.getTelefono()));
-        miLVO = miLDAO.Buscar_LocalidadVO(idlocalidad);
-        jTextLocalidad.setText(miLVO.getNombre());
-        jTextCodigoPostal.setText(miLVO.getCodp());
-        miEVO = miEDAO.Buscar_EstadoVO(idestado);
-        jTextEstado.setText(Integer.toString(miEVO.getId_Estado()));
-        
-        
-        
-        
-        jTextCodigoPostal.setText(miLVO.getCodp());
-         */
-
-    }//GEN-LAST:event_jTextBuscarFarmaciaKeyReleased
-
     private void jTextProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextProvinciaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextProvinciaActionPerformed
@@ -428,14 +366,6 @@ public class JBMFarmacia extends javax.swing.JFrame {
     private void jTextEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextEmailActionPerformed
-
-    private void jTextBuscarFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextBuscarFarmaciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextBuscarFarmaciaActionPerformed
-
-    private void jSeparator9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSeparator9KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jSeparator9KeyReleased
 
     private void jTextEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEstadoActionPerformed
         // TODO add your handling code here:
@@ -448,7 +378,13 @@ public class JBMFarmacia extends javax.swing.JFrame {
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         // TODO add your handling code here:
         //este metodo realiza la busqueda por el Id de la farmacia;
-        Integer id_f = Integer.valueOf(jTextBuscarFarmacia.getText());
+        //pero emplea el combobox para seleccionar la farmacia que desea buscar 
+        // y luego toma el indice del combobox (que es igual al id de la tabla datos_farmacia)
+        //y lo utiliza para realzar la busqueda en farmacias por el id.
+        Integer id_f = jComboBoxFarmacia.getSelectedIndex();
+        
+        
+        //Integer id_f = Integer.valueOf(jTextBuscarFarmacia.getText());
         Integer id_l;
         Integer id_m;
         Integer id_e;
@@ -488,7 +424,10 @@ public class JBMFarmacia extends javax.swing.JFrame {
         jTextLocalidad.setText(LVO.getNombre());
         jTextCodigoPostal.setText(LVO.getCodp());
         jTextEstado.setText(Boolean.toString(EVO.isEstado()));
-
+        
+        //se utiliza para habilitar el area de texto que detalla el motivo de la baja
+        //solo si el campo estado es activo, es decir, true.
+        //recordando que solo se completa el campo motivo cuando se da de baja una farmacia
         if(jTextEstado.getText().equals("true")){
         jTextAreaDetalleMotivo.setEditable(true);
         }
@@ -499,6 +438,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JComboBox<String> jComboBoxFarmacia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -522,9 +462,7 @@ public class JBMFarmacia extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextArea jTextAreaDetalleMotivo;
-    private javax.swing.JTextField jTextBuscarFarmacia;
     private javax.swing.JTextField jTextCodigoPostal;
     private javax.swing.JTextField jTextDireccion;
     private javax.swing.JTextField jTextEmail;
