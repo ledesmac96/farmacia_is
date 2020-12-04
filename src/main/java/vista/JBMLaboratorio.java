@@ -155,6 +155,11 @@ public class JBMLaboratorio extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, -1));
 
+        jComboBoxLaboratorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxLaboratorioActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBoxLaboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 200, -1));
 
         jTextNombre.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -454,6 +459,10 @@ public class JBMLaboratorio extends javax.swing.JFrame {
         jTextAreaDetalleMotivo.setEditable(true);
         }
     }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void jComboBoxLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLaboratorioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxLaboratorioActionPerformed
 
     
 

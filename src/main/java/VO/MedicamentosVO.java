@@ -1,22 +1,28 @@
-
 package VO;
 
-
 public class MedicamentosVO {
-    private Integer Id_Medicamento;
-    private String Nombre;
-    private String Detalle;
-    private Float Precio;
-    private Integer Unidades_Disponibles;
-    private Integer Id_Laboratorio;
-    private Integer Id_Motivo;
-    private Integer Id_Estado;
+
+    public Integer Id_Medicamento;
+    public String Nombre;
+    public String Detalle;
+    public Float Precio;
+    public Integer Unidades_Disponibles;
+    public Integer Id_Laboratorio;
+    public Integer Id_Motivo;
+    public Integer Id_Estado;
 
     /**
      * @return the Id_Medicamento
      */
     public Integer getId_Medicamento() {
         return Id_Medicamento;
+    }
+
+    /**
+     * @param Id_Medicamento the Id_Medicamento to set
+     */
+    public void setId_Medicamento(Integer Id_Medicamento) {
+        this.Id_Medicamento = Id_Medicamento;
     }
 
     /**
@@ -117,7 +123,4 @@ public class MedicamentosVO {
         this.Id_Estado = Id_Estado;
     }
 
-    
-    
-    
 }

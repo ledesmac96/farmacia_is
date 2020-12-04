@@ -419,10 +419,14 @@ public class Menu extends javax.swing.JFrame {
 
     private void opRegCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opRegCompraActionPerformed
         // TODO add your handling code here:
+        JRegistrarMedicamentos VistaRegistrarMedicamentos = new JRegistrarMedicamentos();
+        VistaRegistrarMedicamentos.setVisible(true);
     }//GEN-LAST:event_opRegCompraActionPerformed
 
     private void opModfDatosMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opModfDatosMedActionPerformed
         // TODO add your handling code here:
+        JBMMedicamentos VistaModificarMedicamentos = new JBMMedicamentos();
+        VistaModificarMedicamentos.setVisible(true);
     }//GEN-LAST:event_opModfDatosMedActionPerformed
 
     private void opRegLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opRegLabActionPerformed
